@@ -1,0 +1,27 @@
+{
+  "name": "chatapp-websocket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "admin-lte": "^2.4.8",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MdShakilMahmud/ChatApp-WebSocket.git"
+  },
+  "author": "Shakil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MdShakilMahmud/ChatApp-WebSocket/issues"
+  },
+  "homepage": "https://github.com/MdShakilMahmud/ChatApp-WebSocket#readme"
+}
