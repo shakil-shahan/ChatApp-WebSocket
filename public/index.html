@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%;">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -7,12 +7,12 @@
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Chatting Application - Shahan</title>
+    <title>Chatting Application by Shahan</title>
 
     <link rel="stylesheet" href="adminLte/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="adminLte/dist/css/AdminLTE.min.css?version=2.4">
-    <!-- <link rel="stylesheet" href="adminLte/dist/css/skins/_all-skins.min.css?version=2.4"> -->
-    <!-- <link rel="stylesheet" href="/css/docs.css?version=2.4"> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
@@ -21,22 +21,35 @@
     <style>
         html, body {
             height: 100% !important;
-            overflow-y: hidden;
+            overflow-x: hidden;
         }
 
-        .chatField {
+        .chat-row {
             height: 100%;
+            padding-bottom: 40px
+        }
+
+        .chatField, .chat-div, .direct-chat-primary {
+            height: 100%;
+        }
+
+        .box-body {
+            height: 85%;
+        }
+
+        .box-footer {
+            position: relative;
         }
     </style>
 </head>
 
 <body>
-    <div class="row">
+    <div class="row chat-row">
         <!-- Direct Chat -->
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 chat-div">
             <!-- DIRECT CHAT PRIMARY -->
             <div class="box box-primary direct-chat direct-chat-primary">
-                <div class="box-header with-border">
+                <div class="box-header with-border chatHeader">
                     <h3 class="box-title">Direct Chat</h3>
                     <div class="box-tools pull-right">
                         <span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
@@ -49,6 +62,7 @@
                 <div class="box-body">
                     <!-- Conversations are loaded here -->
                     <div class="direct-chat-messages chatField">
+
                         <!-- Message. Default to the left -->
                         <div class="direct-chat-msg">
                             <div class="direct-chat-info clearfix">
@@ -63,7 +77,6 @@
                                 Is this template really for free? That's unbelievable!
                             </div><!-- /.direct-chat-text -->
                         </div><!-- /.direct-chat-msg -->
-
                         <!-- Message to the right -->
                         <div class="direct-chat-msg right">
                             <div class="direct-chat-info clearfix">
@@ -77,90 +90,7 @@
                                 You better believe it!
                             </div><!-- /.direct-chat-text -->
                         </div><!-- /.direct-chat-msg -->
-                        <!-- Message. Default to the left -->
-                        <div class="direct-chat-msg">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-left">Alexander
-                                    Pierce</span>
-                                <span class="direct-chat-timestamp pull-right">23 Jan
-                                    2:00 pm</span>
-                            </div><!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="adminLte/dist/img/user1-128x128.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                Is this template really for free? That's unbelievable!
-                            </div><!-- /.direct-chat-text -->
-                        </div><!-- /.direct-chat-msg -->
 
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                <span class="direct-chat-timestamp pull-left">23 Jan
-                                    2:05 pm</span>
-                            </div><!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="adminLte/dist/img/user3-128x128.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div><!-- /.direct-chat-text -->
-                        </div><!-- /.direct-chat-msg -->
-                        <!-- Message. Default to the left -->
-                        <div class="direct-chat-msg">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-left">Alexander
-                                    Pierce</span>
-                                <span class="direct-chat-timestamp pull-right">23 Jan
-                                    2:00 pm</span>
-                            </div><!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="adminLte/dist/img/user1-128x128.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                Is this template really for free? That's unbelievable!
-                            </div><!-- /.direct-chat-text -->
-                        </div><!-- /.direct-chat-msg -->
-
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                <span class="direct-chat-timestamp pull-left">23 Jan
-                                    2:05 pm</span>
-                            </div><!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="adminLte/dist/img/user3-128x128.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div><!-- /.direct-chat-text -->
-                        </div><!-- /.direct-chat-msg -->
-                        <!-- Message. Default to the left -->
-                        <div class="direct-chat-msg">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-left">Alexander
-                                    Pierce</span>
-                                <span class="direct-chat-timestamp pull-right">23 Jan
-                                    2:00 pm</span>
-                            </div><!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="adminLte/dist/img/user1-128x128.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                Is this template really for free? That's unbelievable!
-                            </div><!-- /.direct-chat-text -->
-                        </div><!-- /.direct-chat-msg -->
-
-                        <!-- Message to the right -->
-                        <div class="direct-chat-msg right">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                <span class="direct-chat-timestamp pull-left">23 Jan
-                                    2:05 pm</span>
-                            </div><!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="adminLte/dist/img/user3-128x128.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div><!-- /.direct-chat-text -->
-                        </div><!-- /.direct-chat-msg -->
                     </div>
                     <!--/.direct-chat-messages-->
 
@@ -198,68 +128,13 @@
         </div><!-- /.col -->
     </div>
     <!-- ./wrapper -->
+    <div class="clearfix"></div>
 
     <!-- Scripts -->
     <script src="adminLte/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="adminLte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="adminLte/dist/js/adminlte.min.js"></script>
     <script src="index.js"></script>
-    <script>
-        $(function () {
-            $('#sidebar-form').on('submit', function (e) {
-                e.preventDefault();
-            });
-
-            $('.sidebar-menu li.active').data('lte.pushmenu.active', true);
-
-            $('#search-input').on('keyup', function () {
-                var term = $('#search-input').val().trim();
-
-                if (term.length === 0) {
-                    $('.sidebar-menu li').each(function () {
-                        $(this).show(0);
-                        $(this).removeClass('active');
-                        if ($(this).data('lte.pushmenu.active')) {
-                            $(this).addClass('active');
-                        }
-                    });
-                    return;
-                }
-
-                $('.sidebar-menu li').each(function () {
-                    if ($(this).text().toLowerCase().indexOf(term.toLowerCase()) === -1) {
-                        $(this).hide(0);
-                        $(this).removeClass('pushmenu-search-found', false);
-
-                        if ($(this).is('.treeview')) {
-                            $(this).removeClass('active');
-                        }
-                    } else {
-                        $(this).show(0);
-                        $(this).addClass('pushmenu-search-found');
-
-                        if ($(this).is('.treeview')) {
-                            $(this).addClass('active');
-                        }
-
-                        var parent = $(this).parents('li').first();
-                        if (parent.is('.treeview')) {
-                            parent.show(0);
-                        }
-                    }
-
-                    if ($(this).is('.header')) {
-                        $(this).show();
-                    }
-                });
-
-                $('.sidebar-menu li.pushmenu-search-found.treeview').each(function () {
-                    $(this).find('.pushmenu-search-found').show(0);
-                });
-            });
-        });
-    </script>
-    <div class="clearfix"></div>
 </body>
 
 </html>
